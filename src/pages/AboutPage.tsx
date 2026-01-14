@@ -1,10 +1,10 @@
-const AuthPage = () => {
+const AboutPage = () => {
   return (
     <div>
-      AuthPage
+      AboutPAge
       <div>sdfsd</div>
     </div>
   );
 };
 
-export { AuthPage };
+export { AboutPage };

@@ -1,12 +1,13 @@
-import ThemeToggle from "../widgets/ThemeToggler/ThemeToggler";
+import { Post } from "@/widgets";
 
 const MainPage = () => {
-	return (
-		<div>
-			<ThemeToggle />
-			home page
-		</div>
-	);
+  return (
+    <div>
+      <Post />
+      <Post />
+      <Post />
+    </div>
+  );
 };
 
 export { MainPage };
