@@ -7,3 +7,5 @@ export { Followers } from "./Followers";
 export { Following } from "./Following";
 export { SearchPage } from "./SearchPage";
 export { CreatePostPage } from "./CreatePostPage";
+export { PostPage } from "./PostPage";
+export { UserProfile } from "./UserProfile";

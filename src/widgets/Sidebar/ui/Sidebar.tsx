@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home, Search, Settings, User } from "lucide-react";
+import { Home, Search, User } from "lucide-react";
 import { useState } from "react";
 
 function Sidebar() {
@@ -11,7 +11,6 @@ function Sidebar() {
     { icon: Home, label: "Home", href: "/" },
     { icon: Search, label: "Search", href: "/search" },
     { icon: User, label: "Profile", href: "/profile" },
-    { icon: Settings, label: "Settings", href: "/settings" },
   ];
 
   return (
@@ -49,10 +48,9 @@ function Sidebar() {
           {!isCreatePostPage && (
             <>
               <div className="mt-8 pt-8 border-t border-gray-400"></div>
-
               <div className="mt-4">
                 <Link
-                  to="/create-post"
+                  to="/create_post"
                   className="w-full bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center"
                 >
                   <span>Add New post</span>

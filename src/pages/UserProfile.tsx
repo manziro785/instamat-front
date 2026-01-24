@@ -1,16 +1,18 @@
+import { Route } from "@/app/routes/_layout/profile";
+import { useGetUserProfileQuery } from "@/shared/model/useProfileUser";
 import { useGetMyPostsQuery } from "@/widgets/ProfileInfo/model/useGetMyPostsQuery";
-import { useGetProfileQuery } from "@/widgets/ProfileInfo/model/useGetProfileQuery";
 import { PostsBlock } from "@/widgets/ProfileInfo/ui/PostsBlock";
 import { ProfileBlock } from "@/widgets/ProfileInfo/ui/ProfileBlock";
 import { Spinner } from "@radix-ui/themes";
+import { Outlet } from "@tanstack/react-router";
 
-const ProfilePage = () => {
-  const { data, isLoading } = useGetProfileQuery();
-  const { data: user, isLoading: isLoadingUser } = useGetProfileQuery();
+const UserProfile = () => {
+  const { userId } = Route.useParams();
+  const { data: user, isLoading: isLoadingUser } =
+    useGetUserProfileQuery(userId);
   const { data: posts, isLoading: isLoadingPosts } = useGetMyPostsQuery(
     user?.id,
   );
-  if (isLoading) return <Spinner />;
   if (isLoadingUser || isLoadingPosts)
     return (
       <div className="flex justify-center items-center w-full">
@@ -21,9 +23,9 @@ const ProfilePage = () => {
   return (
     <div className="ml-20 w-full">
       {" "}
-      <ProfileBlock data={data} /> <PostsBlock posts={posts} />
+      <ProfileBlock data={user} /> <PostsBlock posts={posts} />
     </div>
   );
 };
 
-export { ProfilePage };
+export { UserProfile };

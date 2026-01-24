@@ -63,7 +63,7 @@ const PostBlock = () => {
         </Box>
 
         <div className="space-y-4">
-          <Label className="block">
+          <Label className="block flex flex-col">
             Image *
             {!preview ? (
               <div className="relative mt-2">
