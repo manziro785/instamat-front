@@ -1,29 +1,21 @@
-import { Spinner } from "@radix-ui/themes";
-import { useGetMyPostsQuery } from "../model/useGetMyPostsQuery";
-import { useGetProfileQuery } from "../model/useGetProfileQuery";
+import type { PostType } from "@/entities/post/type/post";
 import { Link } from "@tanstack/react-router";
 
-const PostsBlock = () => {
-  const { data: user, isLoading: isLoadingUser } = useGetProfileQuery();
-  const { data, isLoading: isLoadingPosts } = useGetMyPostsQuery(user?.id);
+interface PostsBlockProps {
+  posts: { posts: PostType[] };
+}
 
-  if (isLoadingUser || isLoadingPosts)
-    return (
-      <div className="flex justify-center items-center w-full">
-        <Spinner />
-      </div>
-    );
-
+const PostsBlock = ({ posts }: PostsBlockProps) => {
   return (
-    <div className="mt-20">
-      <div className="flex flex-col justify-center text-gray-200 items-center mb-4 text-md font-light tracking-wide">
-        PUBLICATIONS
-        <hr className="w-full mt-2 border-gray-500 " />
-      </div>
+    <div>
       <div className="grid grid-cols-3 gap-1 mt-10">
-        {data?.posts?.length > 0 ? (
-          data.posts.map((post) => (
-            <Link to={`/posts/${post.id}`} key={post.id}>
+        {posts?.posts?.length > 0 ? (
+          posts.posts.map((post: PostType) => (
+            <Link
+              to="/posts/$postId"
+              params={{ postId: String(post.id) }}
+              key={post.id}
+            >
               <div className="cursor-pointer aspect-square overflow-hidden relative group">
                 <img
                   src={post.image_url}
@@ -36,7 +28,7 @@ const PostsBlock = () => {
           ))
         ) : (
           <p className="col-span-3 font-light flex justify-center text-gray-500">
-            You have no posts
+            No posts
           </p>
         )}
       </div>

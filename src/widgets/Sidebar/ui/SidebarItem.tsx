@@ -1,10 +1,10 @@
-import { Link } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 
 interface SidebarItem {
   icon: LucideIcon;
   label: string;
   href: string;
+  isActive: boolean;
 }
 
 const SidebarItem = ({ icon: Icon, label, href, isActive }: SidebarItem) => {
