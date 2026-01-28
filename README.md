@@ -1,73 +1,131 @@
-# React + TypeScript + Vite
+# InstaMat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern social media platform for sharing photos and connecting with friends. Inspired by Instagram, Twitter, and Twitch.
 
-Currently, two official plugins are available:
+- https://insta-mat.netlify.app/
+- https://github.com/manziro785/instamat-back
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Screenshots
 
-## React Compiler
+![Screenshot 1](./src/shared/assets/screenshots/img-1.png)-----
+![Screenshot 2](./src/shared/assets/screenshots/img-2.png)-----
+![Screenshot 3](./src/shared/assets/screenshots/img-3.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+### Authentication
+- Email/Password registration and login
+- Google OAuth integration
+- JWT token-based security
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### User Profiles
+- Customizable username, name, and bio
+- Avatar upload with Cloudinary
+- Profile statistics (posts, followers, following)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Posts
+- Photo uploads with captions
+- Hashtag support (automatic extraction)
+- Edit and delete posts
+- Like and save posts
+- Infinite scroll feed
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Social Interactions
+- Follow/unfollow users
+- Like posts and comments
+- Comment on posts
+- Save posts to private collection
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Search & Discovery
+- Search users by name or username
+- Search posts by description
+- Search and explore hashtags
+- Sort posts by recent or popular
+
+## Tech Stack
+
+**Frontend**
+- React 19.2.0
+- TypeScript 5.9.3
+- Vite 7.2.4
+
+**State & Routing**
+- TanStack Router 1.141.2
+- TanStack Query 5.90.16
+- Zustand 5.0.10
+
+**UI & Styling**
+- TailwindCSS 3.4.19
+- Radix UI
+- Lucide React (icons)
+
+**Forms & Auth**
+- React Hook Form 7.71.1
+- Google OAuth
+- Axios 1.13.2yourusername
+
+**Development**
+- Vitest (testing)
+- TypeScript ESLint
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+
+- Google OAuth credentials
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/instamat.git
+cd instamat
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies
+```bash
+pnpm install
 ```
+
+3. Create `.env` file
+```env
+VITE_API_URL=your_backend_api_url
+VITE_GOOGLE_CLIENT_ID=your_google_oauth_client_id
+VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+VITE_CLOUDINARY_UPLOAD_PRESET=your_cloudinary_preset
+```
+
+4. Run development server
+```bash
+pnpm run dev
+```
+
+5. Open `http://localhost:5173`
+
+## Scripts
+
+```bash
+pnpm run dev          # Start dev server
+pnpm run build        # Build for production
+pnpm run preview      # Preview production build
+pnpm run lint         # Lint code
+pnpm run format       # Format code
+pnpm run check:fix    # Fix issues
+```
+
+## Project Structure
+
+```
+src/
+├── pages/           # Page components
+├── widgets/         # Complex UI components
+├── features/        # Feature modules
+├── entities/        # Business entities
+├── shared/          # Shared utilities and components
+└── app/            # App configuration
+```
+
+
+## Author
+
+[@Tilekmat Azhygulov](https://github.com/manziro785)
